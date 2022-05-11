@@ -1,6 +1,9 @@
 # Desafio back-end - fluig
 API desafio que permite a visualização dos veículos com menor consumo de gasolina.
 
+## Testes de API
+[Postman](https://www.postman.com/pedrobicudo/workspace/desafio-totvs-fluig/overview)
+
 ## Executando o projeto manualmente
 #### Gerando o jar pelo Maven
 ```shell
