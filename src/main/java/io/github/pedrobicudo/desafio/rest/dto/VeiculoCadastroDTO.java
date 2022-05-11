@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -28,6 +25,7 @@ public class VeiculoCadastroDTO {
     private String modelo;
 
     @NotNull(message = "A data de fabricação do veículo deve ser informada")
+    @PastOrPresent(message = "A data de fabricação deve estar no passado ou presente")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataFabricacao;
 
