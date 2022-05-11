@@ -2,3 +2,8 @@
 server:
   servlet:
     context-path: /api
+
+### CORS Origin ###
+web:
+  cors:
+    origin: ${DESAFIO_ORIGIN:*}

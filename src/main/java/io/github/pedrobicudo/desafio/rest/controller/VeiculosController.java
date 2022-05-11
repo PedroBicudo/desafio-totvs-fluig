@@ -15,6 +15,7 @@ public class VeiculosController {
     @Autowired
     private IVeiculoService veiculoService;
 
+    @CrossOrigin(methods = {RequestMethod.POST})
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void cadastrarVeiculo(
