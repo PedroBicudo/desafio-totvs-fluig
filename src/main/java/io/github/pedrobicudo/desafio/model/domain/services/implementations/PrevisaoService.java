@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.List;
@@ -29,8 +31,13 @@ public class PrevisaoService implements IPrevisaoService {
                 .map(v -> {
                     double litrosCidade = totalKmCidade / v.getConsumoMedioCidadeKML();
                     double litrosRodovia = totalKmRodovia / v.getConsumoMedioRodoviaKML();
-                    double totalGasolina = litrosCidade + litrosRodovia;
-                    BigDecimal totalPrecoGasolina = precoGasolina.multiply(BigDecimal.valueOf(totalGasolina));
+
+                    BigDecimal totalGasolina = new BigDecimal(litrosCidade + litrosRodovia)
+                            .setScale(2, RoundingMode.HALF_DOWN);
+
+                    BigDecimal totalPrecoGasolina = precoGasolina
+                            .multiply(totalGasolina)
+                            .setScale(2, RoundingMode.HALF_DOWN);
 
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(v.getDataFabricacao());
@@ -40,7 +47,7 @@ public class PrevisaoService implements IPrevisaoService {
                             v.getMarca(),
                             v.getModelo(),
                             cal.get(Calendar.YEAR),
-                            totalGasolina,
+                            totalGasolina.doubleValue(),
                             totalPrecoGasolina
                     );
                 })
