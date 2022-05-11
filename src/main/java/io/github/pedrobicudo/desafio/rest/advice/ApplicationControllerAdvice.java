@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +32,12 @@ public class ApplicationControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public APIError handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
         return new APIError("argumento", "O tipo informado é inválido");
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public APIError handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
+        return new APIError("argumento", "O tipo de dado informado é inválido");
     }
 
 }
