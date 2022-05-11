@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -31,11 +32,11 @@ public class VeiculoCadastroDTO {
     private Date dataFabricacao;
 
     @NotNull(message = "O consumo médio (Km/L) do veículo em cidade deve ser informado")
-    @DecimalMin(value = "0.1", message = "O consumo médio (Km/L) do véiculo em cidade deve ser maior que {value}")
+    @Positive(message = "O consumo médio (Km/L) do veículo em cidade deve ser maior que 0")
     private Double consumoMedioCidadeKML;
 
     @NotNull(message = "O consumo médio (Km/L) do veículo em rodovia deve ser informado")
-    @DecimalMin(value = "0.1", message = "O consumo médio (Km/L) do veículo em rodovia deve ser maior que {value}")
+    @Positive(message = "O consumo médio (Km/L) do veículo em rodovia deve ser maior que 0")
     private Double consumoMedioRodoviaKML;
 
 }
