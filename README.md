@@ -11,6 +11,7 @@ git clone https://github.com/PedroBicudo/desafio-totvs-fluig
 
 ## Executando o projeto manualmente
 #### Gerando o jar pelo Maven
+Dentro da pasta `desafio-totvs-fluig` execute o comando abaixo.
 ```shell
 mvn clean install
 ```
@@ -26,7 +27,7 @@ java -jar desafio-0.0.1-SNAPSHOT.jar
 
 ## Executando o projeto em container Docker
 ### Criando a imagem
-Acesse o diretório do projeto e digite o comando abaixo
+Dentro da pasta `desafio-totvs-fluig` execute o comando abaixo.
 ```shell
 docker build -t desafio .
 ```
