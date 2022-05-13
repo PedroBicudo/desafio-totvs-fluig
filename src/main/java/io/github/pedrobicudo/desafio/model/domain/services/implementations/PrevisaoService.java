@@ -41,14 +41,14 @@ public class PrevisaoService implements IPrevisaoService {
                             .multiply(litrosTotalGasolina)
                             .setScale(2, RoundingMode.HALF_EVEN);
 
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(veiculo.getDataFabricacao());
+                    Calendar calendarDataFabricacao = Calendar.getInstance();
+                    calendarDataFabricacao.setTime(veiculo.getDataFabricacao());
 
                     return new VeiculoPrevisaoDTO(
                             veiculo.getNome(),
                             veiculo.getMarca(),
                             veiculo.getModelo(),
-                            cal.get(Calendar.YEAR),
+                            calendarDataFabricacao.get(Calendar.YEAR),
                             litrosTotalGasolina.doubleValue(),
                             precoTotalGasolina
                     );
