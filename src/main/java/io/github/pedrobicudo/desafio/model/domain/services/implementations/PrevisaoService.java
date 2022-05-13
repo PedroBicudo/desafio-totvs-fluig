@@ -28,9 +28,9 @@ public class PrevisaoService implements IPrevisaoService {
     ) {
         return veiculoRepository.getVeiculos()
                 .stream()
-                .map(v -> {
-                    double litrosCidade = totalKmCidade / v.getConsumoMedioCidadeKML();
-                    double litrosRodovia = totalKmRodovia / v.getConsumoMedioRodoviaKML();
+                .map(veiculo -> {
+                    double litrosCidade = totalKmCidade / veiculo.getConsumoMedioCidadeKML();
+                    double litrosRodovia = totalKmRodovia / veiculo.getConsumoMedioRodoviaKML();
 
                     // Arredonda para duas casas decimais
                     BigDecimal litrosTotalGasolina = new BigDecimal(litrosCidade + litrosRodovia)
@@ -42,12 +42,12 @@ public class PrevisaoService implements IPrevisaoService {
                             .setScale(2, RoundingMode.HALF_EVEN);
 
                     Calendar cal = Calendar.getInstance();
-                    cal.setTime(v.getDataFabricacao());
+                    cal.setTime(veiculo.getDataFabricacao());
 
                     return new VeiculoPrevisaoDTO(
-                            v.getNome(),
-                            v.getMarca(),
-                            v.getModelo(),
+                            veiculo.getNome(),
+                            veiculo.getMarca(),
+                            veiculo.getModelo(),
                             cal.get(Calendar.YEAR),
                             litrosTotalGasolina.doubleValue(),
                             precoTotalGasolina
