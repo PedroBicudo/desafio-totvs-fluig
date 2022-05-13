@@ -41,7 +41,7 @@ public class ApplicationControllerAdvice {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public APIError handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
-        return new APIError("argumento", "O tipo informado é inválido");
+        return new APIError("corpo_requisicao", "O corpo da requisição não apresenta uma estrutura válida");
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
