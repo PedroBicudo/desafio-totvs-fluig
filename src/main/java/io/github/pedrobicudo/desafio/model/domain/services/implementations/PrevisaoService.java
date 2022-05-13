@@ -32,11 +32,11 @@ public class PrevisaoService implements IPrevisaoService {
                     double litrosCidade = totalKmCidade / v.getConsumoMedioCidadeKML();
                     double litrosRodovia = totalKmRodovia / v.getConsumoMedioRodoviaKML();
 
-                    BigDecimal totalGasolina = new BigDecimal(litrosCidade + litrosRodovia)
+                    BigDecimal litrosTotalGasolina = new BigDecimal(litrosCidade + litrosRodovia)
                             .setScale(2, RoundingMode.HALF_DOWN);
 
                     BigDecimal totalPrecoGasolina = precoGasolina
-                            .multiply(totalGasolina)
+                            .multiply(litrosTotalGasolina)
                             .setScale(2, RoundingMode.HALF_DOWN);
 
                     Calendar cal = Calendar.getInstance();
@@ -47,7 +47,7 @@ public class PrevisaoService implements IPrevisaoService {
                             v.getMarca(),
                             v.getModelo(),
                             cal.get(Calendar.YEAR),
-                            totalGasolina.doubleValue(),
+                            litrosTotalGasolina.doubleValue(),
                             totalPrecoGasolina
                     );
                 })
