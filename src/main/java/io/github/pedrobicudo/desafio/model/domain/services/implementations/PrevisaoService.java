@@ -32,9 +32,11 @@ public class PrevisaoService implements IPrevisaoService {
                     double litrosCidade = totalKmCidade / v.getConsumoMedioCidadeKML();
                     double litrosRodovia = totalKmRodovia / v.getConsumoMedioRodoviaKML();
 
+                    // Arredonda para duas casas decimais
                     BigDecimal litrosTotalGasolina = new BigDecimal(litrosCidade + litrosRodovia)
                             .setScale(2, RoundingMode.HALF_EVEN);
 
+                    // Arredonda para duas casas decimais
                     BigDecimal precoTotalGasolina = precoGasolina
                             .multiply(litrosTotalGasolina)
                             .setScale(2, RoundingMode.HALF_EVEN);
