@@ -35,7 +35,7 @@ public class PrevisaoService implements IPrevisaoService {
                     BigDecimal litrosTotalGasolina = new BigDecimal(litrosCidade + litrosRodovia)
                             .setScale(2, RoundingMode.HALF_DOWN);
 
-                    BigDecimal totalPrecoGasolina = precoGasolina
+                    BigDecimal precoTotalGasolina = precoGasolina
                             .multiply(litrosTotalGasolina)
                             .setScale(2, RoundingMode.HALF_DOWN);
 
@@ -48,7 +48,7 @@ public class PrevisaoService implements IPrevisaoService {
                             v.getModelo(),
                             cal.get(Calendar.YEAR),
                             litrosTotalGasolina.doubleValue(),
-                            totalPrecoGasolina
+                            precoTotalGasolina
                     );
                 })
                 .sorted(Comparator.comparing(VeiculoPrevisaoDTO::getPrecoTotalGastoComCombustivel))
