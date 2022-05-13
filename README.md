@@ -4,6 +4,11 @@ API desafio que permite a visualização dos veículos com menor consumo de gaso
 ## Testes de API
 [Postman](https://www.postman.com/pedrobicudo/workspace/desafio-totvs-fluig/overview)
 
+## Clonando o projeto
+```shell
+git clone https://github.com/PedroBicudo/desafio-totvs-fluig
+```
+
 ## Executando o projeto manualmente
 #### Gerando o jar pelo Maven
 ```shell
